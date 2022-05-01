@@ -36,7 +36,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: 🕋  TEST
-        run: ./mvnw test -Dspring.profiles.active=postgres
+        run: ./gradlew test -Dspring.profiles.active=postgres
 
       - name: 📹 Jacoco test report
         run: ./gradlew jacocoTestReport
