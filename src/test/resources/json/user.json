@@ -1,0 +1,64 @@
+[
+  {
+    "id": -5,
+    "email": "man@bat.man",
+    "password": "Secret_password_1",
+    "name": "Tsima",
+    "surname": "Batman",
+    "balance": 770.0,
+    "age": 32,
+    "organization": {
+      "nip": 3456789,
+      "name": "Oracle",
+      "address": "ul.Drakuly, Bermudas"
+    }
+  },
+  {
+    "id": -4,
+    "email": "man@dat.io",
+    "password": "Secret_password_4",
+    "name": "Dima",
+    "surname": "Koltun",
+    "balance": 950.0,
+    "age": 23,
+    "organization": null
+  },
+  {
+    "id": -3,
+    "email": "woman@bat.com",
+    "password": "Secret_password_2",
+    "name": "Slava",
+    "surname": "Kaktus",
+    "balance": 850.0,
+    "age": 44,
+    "organization": {
+      "nip": 2345678,
+      "name": "Mercedes",
+      "address": "ul.Pobeda, Munich"
+    }
+  },
+  {
+    "id": -2,
+    "email": "many@bat.pl",
+    "password": "Secret_password_5",
+    "name": "Lena",
+    "surname": "Golovach",
+    "balance": 1650.0,
+    "age": 67,
+    "organization": null
+  },
+  {
+    "id": -1,
+    "email": "mango@bat.ua",
+    "password": "Secret_password_3",
+    "name": "Arsenij",
+    "surname": "Spiderman",
+    "balance": 150.0,
+    "age": 88,
+    "organization": {
+      "nip": 1234567,
+      "name": "Apollo",
+      "address": "ul. Dwornikow, Poznan"
+    }
+  }
+]

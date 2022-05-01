@@ -1,0 +1,29 @@
+### Register
+POST http://localhost:8080/user/register
+Content-Type: application/json
+
+{
+  "email": "robin@red.com",
+  "password": "SECRET"
+}
+
+
+
+### Get all users
+GET http://localhost:8080/user/
+
+### Get all users
+GET http://localhost:8080/user/name/Tsima
+
+### Buy subscription
+PUT http://localhost:8080/user/-3/INDIVIDUAL
+
+### Get all pensioners
+GET http://localhost:8080/user/employer/Apollo
+
+### Get all yangest users
+GET http://localhost:8080/user/younger/30
+
+
+
+

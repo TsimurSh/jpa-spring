@@ -1,0 +1,26 @@
+spring:
+  application.name: jpa-spring
+  datasource:
+    username: postgres
+    password: postgres
+    url: jdbc:h2:file:./${spring.application.name};DB_CLOSE_ON_EXIT=FALSE;MODE=PostgreSQL;INIT=CREATE SCHEMA IF NOT EXISTS public\;
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        default_schema: public
+  liquibase:
+    default-schema: public
+  output.ansi.enabled: always
+
+springdoc.api-docs.path: /docs
+
+---
+spring:
+  # TODO: SPRING_PROFILES_ACTIVE=postgres (если запускать в этом профиле)
+  config.activate.on-profile: postgres
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+

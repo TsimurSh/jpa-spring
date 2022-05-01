@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2-user-role-create
+      author: timur
+      comment: "Создание таблицы [user-role]"
+      changes:
+        - createTable:
+            tableName: user_role
+            columns:
+              - column:
+                  name: user_id
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: role
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_role
+                    references: role(role)
+        - addPrimaryKey:
+            columnNames: user_id, role
+            constraintName: user_role_pk
+            tableName: user_role
+
+  - changeSet:
+      id: 2-fk-user_role
+      author: timur
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: fk_user_role
+            baseTableName: user_role
+            baseColumnNames: user_id
+            referencedTableName: user_account
+            referencedColumnNames: id
+            onDelete: CASCADE
+            onUpdate: CASCADE
+            validate: true

@@ -1,0 +1,55 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0-user--create
+      author: timur
+      comment: "Создание таблицы [user_account]"
+      changes:
+        - createTable:
+            tableName: user_account
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: user_pkey
+              - column:
+                  name: email
+                  type: varchar(50)
+                  constraints:
+                    unique: true
+              - column:
+                  name: name
+                  type: varchar(50)
+              - column:
+                  name: surname
+                  type: varchar(50)
+              - column:
+                  name: age
+                  type: integer
+              - column:
+                  name: balance
+                  type: float
+                  defaultValueNumeric: 0
+              - column:
+                  name: password
+                  type: varchar(255)
+              - column:
+                  name: last_payment
+                  type: timestamp
+
+
+  - changeSet:
+      id: 0-user_email--index
+      author: steklopod
+      changes:
+        - createIndex:
+            clustered: true
+            columns:
+              - column:
+                  descending: true
+                  name: email
+            indexName: idx-user_email
+            tableName: user_account
+            unique: true

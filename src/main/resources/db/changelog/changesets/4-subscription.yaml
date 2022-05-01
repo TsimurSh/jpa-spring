@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: 4-subscription-create
+      author: timur
+      comment: "Создание таблицы [subscription]"
+      changes:
+        - createTable:
+            tableName: subscription
+            columns:
+              - column:
+                  name: name
+                  type: varchar(56)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: subscription_pkey
+              - column:
+                  name: title
+                  type: varchar(56)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: float
+                  defaultValueNumeric: 0
+
+  ### USER_ACCOUNT
+  - changeSet:
+      id: 4-user-subscription--column
+      author: timur
+      comment: "Создание коллонки [subscription_name]"
+      changes:
+        - addColumn:
+            tableName: user_account
+            columns:
+              - column:
+                  name: subscription_name
+                  type: varchar(56)
+                  constraints:
+                    foreignKeyName: fk_subscription_name
+                    references: subscription(name)
+

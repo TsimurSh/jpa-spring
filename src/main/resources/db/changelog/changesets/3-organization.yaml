@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3-organization-create
+      author: timur
+      comment: "Создание таблицы [organization]"
+      changes:
+        - createTable:
+            tableName: organization
+            columns:
+              - column:
+                  name: nip
+                  type: integer
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: organization_pkey
+              - column:
+                  name: name
+                  type: varchar(56)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address
+                  type: varchar(250)
+              - column:
+                  name: owner_id
+                  type: integer
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_owner_id
+                    references: user_account(id)
+
+  ### USER_ACCOUNT
+  - changeSet:
+      id: 3-user-employer--column
+      author: timur
+      comment: "Создание колонки [employer nip]"
+      changes:
+        - addColumn:
+            tableName: user_account
+            columns:
+              - column:
+                  name: employer_nip
+                  type: integer
+                  constraints:
+                    foreignKeyName: fk_employer
+                    references: organization(nip)

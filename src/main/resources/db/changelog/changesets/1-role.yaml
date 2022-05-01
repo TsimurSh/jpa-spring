@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1-role-create
+      author: timur
+      comment: "Создание таблицы [role]"
+      changes:
+        - createTable:
+            tableName: role
+            columns:
+              - column:
+                  name: role
+                  type: varchar(32)
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: role_pkey
