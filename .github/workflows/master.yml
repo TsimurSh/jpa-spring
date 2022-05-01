@@ -37,3 +37,11 @@ jobs:
 
       - name: 🕋  TEST
         run: ./mvnw test -Dspring.profiles.active=postgres
+
+      - name: 📹 Jacoco test report
+        run: ./gradlew jacocoTestReport
+      - name: 🎐 Test codecov
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          verbose: true
