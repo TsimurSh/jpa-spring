@@ -32,8 +32,8 @@ jobs:
           postgresql user: postgres
           postgresql password: postgres
 
-      - name: chmod +x ./mvnw
-        run: chmod +x ./mvnw
+      - name: chmod +x ./gradlew
+        run: chmod +x ./gradlew
 
       - name: 🕋  TEST
         run: ./mvnw test -Dspring.profiles.active=postgres
