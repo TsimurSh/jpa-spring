@@ -3,8 +3,8 @@ package pl.tsimur.jpatest.service;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import pl.tsimur.jpatest.model.Subscription;
-import pl.tsimur.jpatest.model.Tariff;
+import pl.timur.jpatest.model.Subscription;
+import pl.timur.jpatest.model.Tariff;
 
 import static org.junit.jupiter.api.Assertions.*;
 

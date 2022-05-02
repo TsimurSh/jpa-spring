@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-import pl.tsimur.jpatest.model.Organization;
-import pl.tsimur.jpatest.model.User;
+import pl.timur.jpatest.model.Organization;
+import pl.timur.jpatest.model.User;
 
 import java.util.List;
 

@@ -4,10 +4,10 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-import pl.tsimur.jpatest.exception.NotEnoughMoneyException;
-import pl.tsimur.jpatest.model.Tariff;
-import pl.tsimur.jpatest.model.User;
-import pl.tsimur.jpatest.model.dto.UserMiniDto;
+import pl.timur.jpatest.exception.NotEnoughMoneyException;
+import pl.timur.jpatest.model.Tariff;
+import pl.timur.jpatest.model.User;
+import pl.timur.jpatest.model.dto.UserMiniDto;
 
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;

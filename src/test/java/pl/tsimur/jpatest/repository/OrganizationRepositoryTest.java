@@ -6,13 +6,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.transaction.annotation.Transactional;
-import pl.tsimur.jpatest.model.Organization;
-import pl.tsimur.jpatest.model.User;
+import pl.timur.jpatest.model.Organization;
+import pl.timur.jpatest.model.User;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static pl.tsimur.jpatest.repository.OrganizationRepositoryTest.TestData.org1;
 
 @DataJpaTest
 public class OrganizationRepositoryTest {
@@ -22,20 +21,20 @@ public class OrganizationRepositoryTest {
     @Test
     void createTest() {
         // 1 - C: Create
-        Organization organization = repositoryOrg.save(org1);
+        Organization organization = repositoryOrg.save(TestData.org1);
 
         // 2 - R: Read
         assertTrue(
-                repositoryOrg.findById(org1.getNip()) // Возвращает Optional<Organization> - поэтому нужно распаковать .get()
+                repositoryOrg.findById(TestData.org1.getNip()) // Возвращает Optional<Organization> - поэтому нужно распаковать .get()
                         .isPresent());
-        repositoryOrg.deleteById(org1.getNip());
+        repositoryOrg.deleteById(TestData.org1.getNip());
     }
 
     @Test
     @Transactional
     void CRUDTest() {
         // 1 - C: Create
-        Organization organization = repositoryOrg.save(org1);
+        Organization organization = repositoryOrg.save(TestData.org1);
         System.out.println("🤖 Сохранил организацию: " + organization.getName());
         Integer id = organization.getNip();
         assertNotNull(id);
@@ -78,10 +77,10 @@ public class OrganizationRepositoryTest {
     @Test
     @Disabled
     void updateOrganizationByOwnerIdTest() {
-        Integer nip = org1.getNip();
+        Integer nip = TestData.org1.getNip();
         String newName = "Oracle";
 
-        Organization organization = repositoryOrg.save(org1);
+        Organization organization = repositoryOrg.save(TestData.org1);
 
         String oldName = organization.getName();
 

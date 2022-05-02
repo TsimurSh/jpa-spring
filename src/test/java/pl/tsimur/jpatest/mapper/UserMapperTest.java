@@ -3,8 +3,9 @@ package pl.tsimur.jpatest.mapper;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.BeanUtils;
-import pl.tsimur.jpatest.model.User;
-import pl.tsimur.jpatest.model.dto.LoginDto;
+import pl.timur.jpatest.mapper.UserMapper;
+import pl.timur.jpatest.model.User;
+import pl.timur.jpatest.model.dto.LoginDto;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import pl.tsimur.jpatest.model.User;
+import pl.timur.jpatest.model.User;
 
 import java.util.List;
 import java.util.Optional;
