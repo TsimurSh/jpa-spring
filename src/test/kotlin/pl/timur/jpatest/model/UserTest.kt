@@ -2,12 +2,14 @@ package pl.timur.jpatest.model
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 internal class UserTest {
     var mapper = ObjectMapper()
 
     @Test
+    @Disabled
     fun createUser() {
         val user: User = User().apply {
             id = 1

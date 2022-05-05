@@ -12,10 +12,20 @@ import pl.timur.jpatest.model.User
 @DataJpaTest
 class OrganizationRepositoryTest(@Autowired private val repositoryOrg: OrganizationRepository) {
 
+    internal object TestData {
+        val user1 = User.builder().id(-1).build()
+        val org1 = Organization.builder()
+            .nip(5674523)
+            .address("ul.Slusara, Poznan")
+            .name("Pull&Bear")
+            .owner(user1)
+            .build()
+    }
+
     @Test
     fun createTest() {
         // 1 - C: Create
-        val organization = repositoryOrg!!.save(TestData.org1)
+        val organization = repositoryOrg.save(TestData.org1)
 
         // 2 - R: Read
         Assertions.assertTrue(
@@ -29,7 +39,7 @@ class OrganizationRepositoryTest(@Autowired private val repositoryOrg: Organizat
     @Transactional
     fun CRUDTest() {
         // 1 - C: Create
-        val organization = repositoryOrg!!.save(TestData.org1)
+        val organization = repositoryOrg.save(TestData.org1)
         println("🤖 Сохранил организацию: " + organization.name)
         val id = organization.nip
         Assertions.assertNotNull(id)
@@ -58,14 +68,14 @@ class OrganizationRepositoryTest(@Autowired private val repositoryOrg: Organizat
     @Test
     fun findOrganizationByNameTest() {
         val orgName = "Mercedes"
-        val organizationList = repositoryOrg!!.findAllOrganizationByName(orgName)
+        val organizationList = repositoryOrg.findAllOrganizationByName(orgName)
         Assertions.assertEquals(orgName, organizationList[0].name)
     }
 
     @Test
     fun findOrganizationByAddressTest() {
         val address = "ul.Pobeda, Munich"
-        val organizationList = repositoryOrg!!.findAllOrganizationByAddress(address)
+        val organizationList = repositoryOrg.findAllOrganizationByAddress(address)
         Assertions.assertEquals(address, organizationList[0].address)
     }
 
@@ -74,7 +84,7 @@ class OrganizationRepositoryTest(@Autowired private val repositoryOrg: Organizat
     fun updateOrganizationByOwnerIdTest() {
         val nip = TestData.org1.nip
         val newName = "Oracle"
-        val organization = repositoryOrg!!.save(TestData.org1)
+        val organization = repositoryOrg.save(TestData.org1)
         val oldName = organization.name
         Assertions.assertEquals(oldName, organization.name)
         repositoryOrg.updateOrganizationByNip(nip, newName)
@@ -84,13 +94,4 @@ class OrganizationRepositoryTest(@Autowired private val repositoryOrg: Organizat
         repositoryOrg.deleteByNip(nip)
     }
 
-    internal object TestData {
-        val user1 = User.builder().id(-1).build()
-        val org1 = Organization.builder()
-            .nip(5674523)
-            .address("ul.Slusara, Poznan")
-            .name("Pull&Bear")
-            .owner(user1)
-            .build()
-    }
 }
