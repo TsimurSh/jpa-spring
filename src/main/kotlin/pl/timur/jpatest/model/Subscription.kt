@@ -5,7 +5,7 @@ import javax.persistence.*
 
 @Table
 @Entity
-class Subscription(
+data class Subscription(
     @Id
     @Enumerated(EnumType.STRING)
     val name: Tariff,

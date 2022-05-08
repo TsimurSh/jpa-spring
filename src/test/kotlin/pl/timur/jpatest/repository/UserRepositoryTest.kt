@@ -8,9 +8,11 @@ import pl.timur.jpatest.model.User
 @TestMethodOrder(MethodOrderer.OrderAnnotation::class)
 @SpringBootTest
 class UserRepositoryTest(@Autowired private val userRepository: UserRepository) {
-    private val user1 = User.builder().name("Tarantul").surname("Ivanov")
-        .age(34).email("tarantul-666@gmail.com")
-        .password("ouhg938yg93ojkgrh3984ygu20jvn39420uefpj").build()
+    private val user1 = User(
+        name = "Tarantul", surname = "Ivanov",
+        age = 34, email = "tarantul-666@gmail.com",
+        password = "ouhg938yg93ojkgrh3984ygu20jvn39420uefpj"
+    )
 
     @Test
     @Order(2)

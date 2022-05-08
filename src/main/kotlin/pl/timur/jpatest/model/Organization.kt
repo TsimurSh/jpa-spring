@@ -13,10 +13,10 @@ data class Organization(
 ) {
     @OneToMany(mappedBy = "employer", fetch = FetchType.LAZY)
     @JsonIgnore
-    val employees: List<User> = ArrayList()
+    var employees: List<User> = ArrayList()
 
     @OneToOne
     @JoinColumn(name = "owner_id")
     @JsonIgnore
-    val owner: User? = null
+    var owner: User? = null
 }

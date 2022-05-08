@@ -5,7 +5,7 @@ import javax.persistence.*
 
 @Entity
 @Table
-class Role(
+data class Role(
     @Id
     @Enumerated(EnumType.STRING)
     val role: Scope

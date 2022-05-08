@@ -1,13 +1,11 @@
 package pl.timur.jpatest.service
 
-import org.mapstruct.factory.Mappers
 import org.slf4j.LoggerFactory
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import pl.timur.jpatest.exception.NotEnoughMoneyException
 import pl.timur.jpatest.exception.NotFoundException
-import pl.timur.jpatest.mapper.UserMapper
 import pl.timur.jpatest.model.Subscription
 import pl.timur.jpatest.model.Tariff
 import pl.timur.jpatest.model.User
@@ -25,7 +23,6 @@ class UserServiceImpl(
 
     companion object {
         private val log = LoggerFactory.getLogger(this::class.java)
-        private val MAPPER = Mappers.getMapper(UserMapper::class.java)
     }
 
     @Transactional
@@ -110,8 +107,8 @@ class UserServiceImpl(
     override fun findAll(): List<User> = repository.findAll()
 
     override fun findAllMiniUsers(): List<UserMiniDto> {
-        val users = repository.findAll()
-        val usersMimi = MAPPER.toUserMiniDto(users)
+        val users: MutableList<User> = repository.findAll()
+        val usersMimi = users.map(User::toUserMiniDto)
         log.info("Found {} usersMimi", users.size)
         return usersMimi
     }

@@ -2,6 +2,8 @@ package pl.timur.jpatest.model
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import org.hibernate.annotations.ColumnDefault
+import pl.timur.jpatest.model.dto.LoginDto
+import pl.timur.jpatest.model.dto.UserMiniDto
 import java.time.LocalDateTime
 import javax.persistence.*
 import javax.validation.constraints.Email
@@ -10,18 +12,21 @@ import javax.validation.constraints.Positive
 
 @Entity
 @Table(name = "user_account")
-class User(
+data class User(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    val id: Int,
-    val email: @Email(message = "Email is mandatory") String,
-    val password: String,
-    val name: String,
-    val surname: String,
+    val id: Int = 0,
+    @Email(message = "Email is mandatory")
+    val email: String? = null,
+    val password: String? = null,
+    val name: String? = null,
+    val surname: String? = null,
     @ColumnDefault("0")
-    val balance: @Positive Float,
-    val age: @Min(0) Int,
-    val lastPayment: LocalDateTime
+    @Positive
+    val balance: Float = 0f,
+    @Min(0)
+    val age: Int? = null,
+    val lastPayment: LocalDateTime? = null
 ) {
     @OneToOne(mappedBy = "owner")
     @JsonIgnore
@@ -45,6 +50,10 @@ class User(
         inverseJoinColumns = [JoinColumn(name = "role")]
     )
     val roles: List<Role> = ArrayList()
+
+    fun toLoginDto() = LoginDto(email = email!!, password = password!!)
+
+    fun toUserMiniDto() = UserMiniDto(id, name, surname, age)
 
     override fun toString(): String {
         return "User(id=$id, email='$email', password='$password', name='$name', " +
