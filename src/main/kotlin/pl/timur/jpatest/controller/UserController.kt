@@ -1,6 +1,9 @@
 package pl.timur.jpatest.controller
 
 import io.swagger.v3.oas.annotations.Operation
+import jakarta.validation.Valid
+import jakarta.validation.constraints.NotBlank
+import jakarta.validation.constraints.Positive
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.validation.annotation.Validated
@@ -9,9 +12,6 @@ import pl.timur.jpatest.model.Tariff
 import pl.timur.jpatest.model.User
 import pl.timur.jpatest.model.dto.UserMiniDto
 import pl.timur.jpatest.service.UserService
-import javax.validation.Valid
-import javax.validation.constraints.NotBlank
-import javax.validation.constraints.Positive
 
 @Validated
 @RestController

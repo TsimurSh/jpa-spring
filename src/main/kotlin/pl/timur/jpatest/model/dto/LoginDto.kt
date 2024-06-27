@@ -1,7 +1,7 @@
 package pl.timur.jpatest.model.dto
 
+import jakarta.validation.constraints.Email
 import pl.timur.jpatest.model.User
-import javax.validation.constraints.Email
 
 data class LoginDto(
     @Email

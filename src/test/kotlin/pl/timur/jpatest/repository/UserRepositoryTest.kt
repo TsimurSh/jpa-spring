@@ -18,7 +18,7 @@ class UserRepositoryTest(@Autowired private val userRepository: UserRepository) 
     @Order(2)
     fun createUserTest() {
         Assertions.assertNull(id)
-        val userSaved = userRepository!!.save(user1)
+        val userSaved = userRepository.save(user1)
         println("Created userSaved: $userSaved")
         println("User id = " + id)
         id = userSaved.id
@@ -29,21 +29,21 @@ class UserRepositoryTest(@Autowired private val userRepository: UserRepository) 
     @Test
     @Order(3)
     fun findUserByAgeAfterTest() {
-        val users = userRepository!!.findAllByAgeAfter(18)
+        val users = userRepository.findAllByAgeAfter(18)
         Assertions.assertTrue(users.size > 4)
     }
 
     @Test
     @Order(4)
     fun findUserByAgeBeforeTest() {
-        val users = userRepository!!.findAllByAgeBefore(50)
+        val users = userRepository.findAllByAgeBefore(50)
         Assertions.assertFalse(users.isEmpty())
     }
 
     @Test
     @Order(5)
     fun findUserByNameStartingWithTest() {
-        val users = userRepository!!.findUserByNameStartingWith("T")
+        val users = userRepository.findUserByNameStartingWith("T")
         Assertions.assertEquals("Tsima", users[0].name)
     }
 
@@ -51,7 +51,7 @@ class UserRepositoryTest(@Autowired private val userRepository: UserRepository) 
     @get:Test
     val userByIdTest: Unit
         get() {
-            val user = userRepository!!.findById(-2)
+            val user = userRepository.findById(-2)
             Assertions.assertTrue(user.isPresent)
         }
 
@@ -59,7 +59,7 @@ class UserRepositoryTest(@Autowired private val userRepository: UserRepository) 
     @get:Test
     val userById___WhenNotExistsTest: Unit
         get() {
-            val userOpt = userRepository!!.findById(666)
+            val userOpt = userRepository.findById(666)
             Assertions.assertFalse(userOpt.isPresent)
         }
 
